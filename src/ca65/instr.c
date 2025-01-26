@@ -166,8 +166,8 @@ static const struct {
 
 /* Instruction table for the 6502 */
 static const struct {
-    unsigned Count;
-    InsDesc  Ins[56];
+    unsigned Count;  
+    InsDesc  Ins[64]; /* Changed from 56 to 64 to accommodate the 8 new instructions */
 } InsTab6502 = {
     sizeof (InsTab6502.Ins) / sizeof (InsTab6502.Ins[0]),
     {
@@ -201,6 +201,14 @@ static const struct {
         { "JMP",  0x0000808, 0x4c, 6, PutJMP },
         { "JSR",  0x0000008, 0x20, 7, PutAll },
         { "LDA",  0x080A26C, 0xa0, 0, PutAll },
+        { "LDB",  0x080A26C, 0xF5, 1, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 1, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 1, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 1, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 1, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 1, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 1, PutAll },
+        { "LDR",  0x0000001, 0xFD, 1, PutAll },
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -233,7 +241,7 @@ static const struct {
 /* Instruction table for the 6502 with illegal instructions */
 static const struct {
     unsigned Count;
-    InsDesc  Ins[75];
+    InsDesc  Ins[83];
 } InsTab6502X = {
     sizeof (InsTab6502X.Ins) / sizeof (InsTab6502X.Ins[0]),
     {
@@ -277,6 +285,13 @@ static const struct {
         { "LAS",  0x0000200, 0xBB, 0, PutAll },         /* X */
         { "LAX",  0x080A30C, 0xA3, 11, PutAll },        /* X */
         { "LDA",  0x080A26C, 0xa0, 0, PutAll },
+        { "LDB",  0x080A26C, 0xF5, 0, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 0, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 0, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 0, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 0, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 0, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 0, PutAll },
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -322,7 +337,7 @@ static const struct {
 */
 static const struct {
     unsigned Count;
-    InsDesc  Ins[71];
+    InsDesc  Ins[79];
 } InsTab6502DTV = {
     sizeof (InsTab6502DTV.Ins) / sizeof (InsTab6502DTV.Ins[0]),
     {
@@ -364,6 +379,13 @@ static const struct {
         { "LAS",  0x0000200, 0xBB, 0, PutAll },         /* X */
         { "LAX",  0x080A30C, 0xA3, 11, PutAll },        /* X */
         { "LDA",  0x080A26C, 0xa0, 0, PutAll },
+        { "LDB",  0x080A26C, 0xF5, 0, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 0, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 0, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 0, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 0, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 0, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 0, PutAll },
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -403,7 +425,7 @@ static const struct {
 /* Instruction table for the 65SC02 */
 static const struct {
     unsigned Count;
-    InsDesc  Ins[66];
+    InsDesc  Ins[66+8];
 } InsTab65SC02 = {
     sizeof (InsTab65SC02.Ins) / sizeof (InsTab65SC02.Ins[0]),
     {
@@ -440,6 +462,13 @@ static const struct {
         { "JMP",  0x0010808, 0x4c, 6, PutAll },
         { "JSR",  0x0000008, 0x20, 7, PutAll },
         { "LDA",  0x080A66C, 0xa0, 0, PutAll },
+        { "LDB",  0x080A26C, 0xF5, 0, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 0, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 0, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 0, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 0, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 0, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 0, PutAll },
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -479,7 +508,7 @@ static const struct {
 /* Instruction table for the 65C02 */
 static const struct {
     unsigned Count;
-    InsDesc  Ins[100];
+    InsDesc  Ins[108];
 } InsTab65C02 = {
     sizeof (InsTab65C02.Ins) / sizeof (InsTab65C02.Ins[0]),
     {
@@ -532,6 +561,13 @@ static const struct {
         { "JMP",  0x0010808, 0x4c, 6, PutAll },
         { "JSR",  0x0000008, 0x20, 7, PutAll },
         { "LDA",  0x080A66C, 0xa0, 0, PutAll },
+        { "LDB",  0x080A26C, 0xF5, 0, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 0, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 0, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 0, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 0, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 0, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 0, PutAll },
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -589,7 +625,7 @@ static const struct {
 /* Instruction table for the 4510 */
 static const struct {
     unsigned Count;
-    InsDesc  Ins[133];
+    InsDesc  Ins[133+8];
 } InsTab4510 = {
     sizeof (InsTab4510.Ins) / sizeof (InsTab4510.Ins[0]),
     {
@@ -661,6 +697,13 @@ static const struct {
         { "LBVC", 0x0040000, 0x53, 0, PutPCRel4510 },
         { "LBVS", 0x0040000, 0x73, 0, PutPCRel4510 },
         { "LDA",  0x090A66C, 0xa0, 0, Put4510 },
+        { "LDB",  0x080A26C, 0xF5, 0, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 0, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 0, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 0, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 0, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 0, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 0, PutAll },
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LDZ",  0x0800048, 0xa3, 1, Put4510 },
@@ -732,7 +775,7 @@ static const struct {
 /* Instruction table for the 65816 */
 static const struct {
     unsigned Count;
-    InsDesc  Ins[100];
+    InsDesc  Ins[108];
 } InsTab65816 = {
     sizeof (InsTab65816.Ins) / sizeof (InsTab65816.Ins[0]),
     {
@@ -774,6 +817,13 @@ static const struct {
         { "JSL",  0x0000010, 0x20, 7, PutAll },
         { "JSR",  0x0010018, 0x20, 7, PutJSR816 },
         { "LDA",  0x0b8f6fc, 0xa0, 0, PutAll },
+        { "LDB",  0x080A26C, 0xF5, 0, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 0, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 0, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 0, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 0, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 0, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 0, PutAll },
         { "LDX",  0x0c0030c, 0xa2, 1, PutAll },
         { "LDY",  0x0c0006c, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -878,7 +928,7 @@ static const struct {
 /* Instruction table for the HuC6280 (the CPU used in the PC engine) */
 static const struct {
     unsigned Count;
-    InsDesc  Ins[135];
+    InsDesc  Ins[135+8];
 } InsTabHuC6280 = {
     sizeof (InsTabHuC6280.Ins) / sizeof (InsTabHuC6280.Ins[0]),
     {
@@ -937,6 +987,13 @@ static const struct {
         { "JMP",  0x0010808, 0x4c, 6, PutAll },
         { "JSR",  0x0000008, 0x20, 7, PutAll },
         { "LDA",  0x080A66C, 0xa0, 0, PutAll },
+        { "LDB",  0x080A26C, 0xF5, 0, PutAll },
+        { "LDC",  0x080A26C, 0xF6, 0, PutAll },
+        { "LDD",  0x080A26C, 0xF7, 0, PutAll },
+        { "LDE",  0x080A26C, 0xF8, 0, PutAll },
+        { "LDF",  0x080A26C, 0xF9, 0, PutAll },
+        { "LDG",  0x080A26C, 0xFA, 0, PutAll },
+        { "LDH",  0x080A26C, 0xFB, 0, PutAll },
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -1041,7 +1098,7 @@ const InsTable* InsTab = (const InsTable*) &InsTab6502;
 /* Table to build the effective 65xx opcode from a base opcode and an
 ** addressing mode. (The value in the table is ORed with the base opcode)
 */
-static unsigned char EATab[12][AM65I_COUNT] = {
+static unsigned char EATab[13][AM65I_COUNT] = {
     {   /* Table 0 */
         0x00, 0x00, 0x05, 0x0D, 0x0F, 0x15, 0x1D, 0x1F,
         0x00, 0x19, 0x12, 0x00, 0x07, 0x11, 0x17, 0x01,
@@ -1114,6 +1171,12 @@ static unsigned char EATab[12][AM65I_COUNT] = {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x08,
         0x00, 0x00, 0x80, 0x00
     },
+    {   /* Table 12 (Custom opcodes) */
+        0xF5, 0xF6, 0xF7, 0xF8, 0xF9, 0xFA, 0xFB, 0xF4,  /* First 8 modes */
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* Next 8 modes */
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  /* Next 8 modes */
+        0x00, 0x00, 0x00, 0x00                            /* Last 4 modes */
+    }
 };
 
 /* Table to build the effective SWEET16 opcode from a base opcode and an
@@ -1189,7 +1252,6 @@ static int EvalEA (const InsDesc* Ins, EffAddr* A)
     ** for this instruction or CPU.
     */
     A->AddrModeSet &= Ins->AddrMode;
-
     /* If we have an expression, check it and remove any addressing modes that
     ** are too small for the expression size. Because we have to study the
     ** expression anyway, do also replace it by a simpler one if possible.
@@ -1236,10 +1298,12 @@ static int EvalEA (const InsDesc* Ins, EffAddr* A)
 
             case ADDR_SIZE_ABS:
                 A->AddrModeSet &= ~AM65_SET_ZP;
+                printf("ADDR_SIZE_ABS for %s\n", Ins->Mnemonic);
                 break;
 
             case ADDR_SIZE_FAR:
                 A->AddrModeSet &= ~(AM65_SET_ZP | AM65_SET_ABS);
+                printf("ADDR_SIZE_FAR for %s\n", Ins->Mnemonic);
                 break;
         }
 
