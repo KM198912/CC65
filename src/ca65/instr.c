@@ -167,7 +167,7 @@ static const struct {
 /* Instruction table for the 6502 */
 static const struct {
     unsigned Count;  
-    InsDesc  Ins[64]; /* Changed from 56 to 64 to accommodate the 8 new instructions */
+    InsDesc  Ins[66]; /* Changed from 56 to 64 to accommodate the 8 new instructions */
 } InsTab6502 = {
     sizeof (InsTab6502.Ins) / sizeof (InsTab6502.Ins[0]),
     {
@@ -182,8 +182,10 @@ static const struct {
         { "BNE",  0x0020000, 0xd0, 0, PutPCRel8 },
         { "BPL",  0x0020000, 0x10, 0, PutPCRel8 },
         { "BRK",  0x0800005, 0x00, 6, PutAll },
+        { "BUF", 0x0000001, 0xFE, 1, PutAll },
         { "BVC",  0x0020000, 0x50, 0, PutPCRel8 },
         { "BVS",  0x0020000, 0x70, 0, PutPCRel8 },
+        { "CHB",  0x0000001, 0xFF, 0, PutAll },
         { "CLC",  0x0000001, 0x18, 0, PutAll },
         { "CLD",  0x0000001, 0xd8, 0, PutAll },
         { "CLI",  0x0000001, 0x58, 0, PutAll },
@@ -208,7 +210,7 @@ static const struct {
         { "LDF",  0x080A26C, 0xF9, 1, PutAll },
         { "LDG",  0x080A26C, 0xFA, 1, PutAll },
         { "LDH",  0x080A26C, 0xFB, 1, PutAll },
-        { "LDR",  0x0000001, 0xFD, 1, PutAll },
+        
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -218,6 +220,7 @@ static const struct {
         { "PHP",  0x0000001, 0x08, 0, PutAll },
         { "PLA",  0x0000001, 0x68, 0, PutAll },
         { "PLP",  0x0000001, 0x28, 0, PutAll },
+        { "REC",  0x0000001, 0xFD, 1, PutAll },
         { "ROL",  0x000006F, 0x22, 1, PutAll },
         { "ROR",  0x000006F, 0x62, 1, PutAll },
         { "RTI",  0x0000001, 0x40, 0, PutAll },
@@ -1882,11 +1885,13 @@ static void PutSweet16Branch (const InsDesc* Ins)
 
 
 static int CmpName (const void* Key, const void* Instr)
-/* Compare function for bsearch */
 {
-    return strcmp ((const char*)Key, ((const InsDesc*) Instr)->Mnemonic);
+    const char* KeyStr = (const char*)Key;
+    const char* MnemStr = ((const InsDesc*) Instr)->Mnemonic;
+    int result = strcmp(KeyStr, MnemStr);
+    printf("Comparing '%s' with '%s' = %d\n", KeyStr, MnemStr, result);
+    return result;
 }
-
 
 
 void SetCPU (cpu_t NewCPU)
@@ -1914,31 +1919,20 @@ cpu_t GetCPU (void)
 
 
 
-int FindInstruction (const StrBuf* Ident)
-/* Check if Ident is a valid mnemonic. If so, return the index in the
-** instruction table. If not, return -1.
-*/
+int FindInstruction (const StrBuf* Ident) 
 {
     unsigned I;
     const InsDesc* ID;
     char Key[sizeof (ID->Mnemonic)];
 
-    /* Shortcut for the "none" CPU: If there are no instructions to search
-    ** for, bail out early.
-    */
     if (InsTab->Count == 0) {
-        /* Not found */
         return -1;
     }
 
-    /* Make a copy, and uppercase that copy */
+    /* Convert identifier to uppercase key */
     I = 0;
     while (I < SB_GetLen (Ident)) {
-        /* If the identifier is longer than the longest mnemonic, it cannot
-        ** be one.
-        */
         if (I >= sizeof (Key) - 1) {
-            /* Not found, no need for further action */
             return -1;
         }
         Key[I] = toupper ((unsigned char)SB_AtUnchecked (Ident, I));
@@ -1946,15 +1940,14 @@ int FindInstruction (const StrBuf* Ident)
     }
     Key[I] = '\0';
 
-    /* Search for the key */
+    /* Binary search */
     ID = bsearch (Key, InsTab->Ins, InsTab->Count, sizeof (InsDesc), CmpName);
+
     if (ID == 0) {
-        /* Not found */
         return -1;
-    } else {
-        /* Found, return the entry */
-        return ID - InsTab->Ins;
     }
+
+    return ID - InsTab->Ins;
 }
 
 
