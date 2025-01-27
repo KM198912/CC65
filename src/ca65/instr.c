@@ -166,7 +166,7 @@ static const struct {
 
 /* Instruction table for the 6502 */
 static const struct {
-    unsigned Count;  
+    unsigned Count;
     InsDesc  Ins[66]; /* Changed from 56 to 64 to accommodate the 8 new instructions */
 } InsTab6502 = {
     sizeof (InsTab6502.Ins) / sizeof (InsTab6502.Ins[0]),
@@ -210,7 +210,7 @@ static const struct {
         { "LDF",  0x080A26C, 0xF9, 1, PutAll },
         { "LDG",  0x080A26C, 0xFA, 1, PutAll },
         { "LDH",  0x080A26C, 0xFB, 1, PutAll },
-        
+
         { "LDX",  0x080030C, 0xa2, 1, PutAll },
         { "LDY",  0x080006C, 0xa0, 1, PutAll },
         { "LSR",  0x000006F, 0x42, 1, PutAll },
@@ -1919,7 +1919,7 @@ cpu_t GetCPU (void)
 
 
 
-int FindInstruction (const StrBuf* Ident) 
+int FindInstruction (const StrBuf* Ident)
 {
     unsigned I;
     const InsDesc* ID;
