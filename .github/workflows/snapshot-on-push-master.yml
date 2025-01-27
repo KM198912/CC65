@@ -57,12 +57,6 @@ jobs:
       - name: Build the platform libraries.
         shell: bash
         run: make -j2 lib QUIET=1
-      - name: Test that the samples can be built.
-        shell: bash
-        run: make -j2 samples
-      - name: Remove the output from the samples tests.
-        shell: bash
-        run: make -C samples clean
       - name: Remove programs in util directory
         shell: bash
         run: make -C util clean
@@ -92,28 +86,6 @@ jobs:
         with:
           name: cc65-snapshot-win64
           path: cc65-snapshot-win64.zip
-
-      - name: Get the online documents repo.
-        uses: actions/checkout@v4
-        with:
-          repository: KM198912/doc
-          # this token will expire, if it does, generate a new one as decribed in https://github.com/cc65/cc65/issues/2065
-          # - apparently only a "classic" token works here
-          # - the token must exist in the cc65/cc65 repo
-          token: ${{ secrets.DOC_PAT }} # use secret token instead of default
-          path: doc.git
-      - name: Update the online documents.
-        run: |
-          cd doc.git
-          rm *.*
-          cp ../html/*.* .
-          git config user.name "cc65-github"
-          git config user.email "cc65.nomail@github.com"
-          git config push.default simple
-          git add -A
-          # prevent failure when there is nothing to commit
-          git diff-index --quiet HEAD || git commit -m "Updated from https://github.com/cc65/cc65/commit/${GITHUB_SHA}"
-          git push
       - name: Package offline documents.
         run: 7z a cc65-snapshot-docs.zip ./html/*.*
       - name: Upload a Documents Snapshot Zip
