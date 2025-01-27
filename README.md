@@ -1,46 +1,9 @@
 The cc65 cross-compiler suite
 =============================
 
-cc65 is a complete cross-development package for 65(C)02 systems,
-including a powerful macro assembler, a C compiler, linker, archiver,
-simulator and several other tools.  cc65 has C and runtime library
-support for many of the old 6502 machines.  For details look at
-the [cc65 web site](https://cc65.github.io):
-
-| Company / People        | Machine / Environment               |
-|-------------------------|-------------------------------------|
-| Apple                   | Apple II                            |
-|                         | Apple IIe enhanced                  |
-| Atari                   | Atari 400/800                       |
-|                         | Atari 2600                          |
-|                         | Atari 5200                          |
-|                         | Atari 7800                          |
-|                         | Atari XL                            |
-|                         | Lynx                                |
-| Tangerine               | Oric Atmos                          |
-| Eureka                  | Oric Telestrat                      |
-| Acorn                   | BBC series                          |
-| Commodore               | C128                                |
-|                         | C16                                 |
-|                         | C64                                 |
-|                         | CBM 510/610                         |
-|                         | PET                                 |
-|                         | Plus/4                              |
-|                         | VIC-20                              |
-| VTech                   | CreatiVision                        |
-| Commander X16 Community | Commander X16                       |
-| Bit Corporation         | Gamate                              |
-| Berkeley Softworks      | GEOS (Apple/CBM)                    |
-| LUnix Team              | LUnix (C64)                         |
-| Nintendo                | Nintendo Entertainment System (NES) |
-| Ohio Scientific         | OSI C1P                             |
-| MOS Technology, Inc.    | KIM-1                               |
-| NEC                     | PC Engine (PCE)                     |
-| Dr. Jozo Dujmović       | Picocomputer (RP6502)               |
-| Watara                  | Watura/QuickShot Supervision        |
-| Synertek                | SYM-1                               |
-
-A generic configuration to adapt cc65 to new targets is also around.
+This is a Copy of my version of the CC65 toolset to work specifically with my emulator, i dont care much about breaking compability with other targets,
+so i highly discourage the use of this on other targets, if you do, i dont take the blame if things break, but i dont claim to have made this, 
+the list of people, as taken from the CC65 repository and unmodified is below
 
 ## People
 
@@ -80,28 +43,6 @@ enhanced by James E. Hendrix.
 For a complete list look at the [full team list](https://github.com/orgs/cc65/teams)
 or the list of [all contributors](https://github.com/cc65/cc65/graphs/contributors).
 
-# Contact
 
-For general discussion, questions, etc subscribe to the
-[mailing list](https://cc65.github.io/mailing-lists.html)
-or use the [github discussions](https://github.com/cc65/cc65/discussions).
 
-Some of us may also be around on IRC [#cc65](https://web.libera.chat/#cc65) on libera.chat.
-
-# Documentation
-
-* The main [Documentation](https://cc65.github.io/doc) for users and
-  developers.
-* Info on [Contributing](Contributing.md) to the CC65 project. Please
-  read this before working on something you want to contribute, and
-  before reporting bugs.
-* The [Wiki](https://github.com/cc65/wiki/wiki) contains some extra info
-  that does not fit into the regular documentation.
-
-# Downloads
-
-* [Windows 64bit Snapshot](https://sourceforge.net/projects/cc65/files/cc65-snapshot-win64.zip)
-* [Windows 32bit Snapshot](https://sourceforge.net/projects/cc65/files/cc65-snapshot-win32.zip)
-* [Linux Snapshot DEB and RPM](https://software.opensuse.org/download.html?project=home%3Astrik&package=cc65)
-
-[![Snapshot Build](https://github.com/cc65/cc65/actions/workflows/snapshot-on-push-master.yml/badge.svg?branch=master)](https://github.com/cc65/cc65/actions/workflows/snapshot-on-push-master.yml)
+[![Snapshot Build](https://github.com/KM198912/CC65/actions/workflows/snapshot-on-push-master.yml/badge.svg)](https://github.com/KM198912/CC65/actions/workflows/snapshot-on-push-master.yml)
