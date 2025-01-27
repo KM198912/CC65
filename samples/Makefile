@@ -387,36 +387,7 @@ all:
 
 # --------------------------------------------------------------------------
 # List of every supported platform
-TARGETS :=     \
-  atari        \
-  atarixl      \
-  atari2600    \
-  atari5200    \
-  atmos        \
-  bbc          \
-  c128         \
-  c16          \
-  c64          \
-  cbm510       \
-  cbm610       \
-  creativision \
-  cx16         \
-  gamate       \
-  kim1         \
-  lunix        \
-  lynx         \
-  nes          \
-  osic1p       \
-  pce          \
-  pet          \
-  plus4        \
-  sim6502      \
-  sim65c02     \
-  supervision  \
-  sym1         \
-  telestrat    \
-  vic20
-
+TARGETS :=
 # --------------------------------------------------------------------------
 # Rule to make the binaries for every platform
 
