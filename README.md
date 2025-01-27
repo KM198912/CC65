@@ -1,7 +1,9 @@
 The cc65 cross-compiler suite
 =============================
 
-This is a Copy of my version of the CC65 toolset to work specifically with my emulator, i dont care much about breaking compability with other targets,
+This is a Copy of my version of the CC65 toolset to work specifically with my emulator, it has opcodes, not originally supported by any 6502 based system,
+this includes support for 9 general purpose registers, opcodes to directly manipulate video memory, based on sync signal given by the cpu, and more to come,
+i dont care much about breaking compability with other targets,
 so i highly discourage the use of this on other targets, if you do, i dont take the blame if things break, but i dont claim to have made this, 
 the list of people, as taken from the CC65 repository and unmodified is below
 
