@@ -10,7 +10,7 @@ concurrency:
 jobs:
   build_windows:
     name: Build (Windows)
-    if: github.repository == 'cc65/cc65'
+    if: github.repository == 'KM198912/CC65'
     runs-on: windows-latest
 
     steps:
@@ -99,7 +99,7 @@ jobs:
       - name: Get the online documents repo.
         uses: actions/checkout@v4
         with:
-          repository: cc65/doc
+          repository: CC65/doc
           # this token will expire, if it does, generate a new one as decribed in https://github.com/cc65/cc65/issues/2065
           # - apparently only a "classic" token works here
           # - the token must exist in the cc65/cc65 repo
