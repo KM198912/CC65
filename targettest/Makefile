@@ -736,8 +736,6 @@ all:
 # --------------------------------------------------------------------------
 # List of every supported platform
 TARGETS :=     \
-  apple2       \
-  apple2enh    \
   atari        \
   atarixl      \
   atari2600    \

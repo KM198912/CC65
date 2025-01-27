@@ -154,7 +154,7 @@ endif
 # Lists of subdirectories
 
 # disasm depends on cpp
-DIRLIST = tutorial geos atari2600 atari5200 apple2 gamate lynx supervision sym1 kim1 cbm
+DIRLIST = tutorial geos atari2600 atari5200 gamate lynx supervision sym1 kim1 cbm
 
 # --------------------------------------------------------------------------
 # Lists of executables
@@ -289,8 +289,6 @@ EXELIST_geos-cbm = \
         checkversion \
         diodemo
 
-EXELIST_geos-apple = \
-        ascii
 
 EXELIST_lunix = \
         notavailable
@@ -390,8 +388,6 @@ all:
 # --------------------------------------------------------------------------
 # List of every supported platform
 TARGETS :=     \
-  apple2       \
-  apple2enh    \
   atari        \
   atarixl      \
   atari2600    \
@@ -558,7 +554,6 @@ install:
 	$(INSTALL) -d $(DESTDIR)$(samplesdir)/tutorial
 	$(INSTALL) -d $(DESTDIR)$(samplesdir)/atari2600
 	$(INSTALL) -d $(DESTDIR)$(samplesdir)/atari5200
-	$(INSTALL) -d $(DESTDIR)$(samplesdir)/apple2
 	$(INSTALL) -d $(DESTDIR)$(samplesdir)/cbm
 	$(INSTALL) -d $(DESTDIR)$(samplesdir)/gamate
 	$(INSTALL) -d $(DESTDIR)$(samplesdir)/supervision
@@ -574,7 +569,6 @@ install:
 	$(INSTALL) -m0644 tutorial/*.* $(DESTDIR)$(samplesdir)/tutorial
 	$(INSTALL) -m0644 atari2600/*.* $(DESTDIR)$(samplesdir)/atari2600
 	$(INSTALL) -m0644 atari5200/*.* $(DESTDIR)$(samplesdir)/atari5200
-	$(INSTALL) -m0644 apple2/*.* $(DESTDIR)$(samplesdir)/apple2
 	$(INSTALL) -m0644 cbm/*.* $(DESTDIR)$(samplesdir)/cbm
 	$(INSTALL) -m0644 gamate/*.* $(DESTDIR)$(samplesdir)/gamate
 	$(INSTALL) -m0644 supervision/*.* $(DESTDIR)$(samplesdir)/supervision

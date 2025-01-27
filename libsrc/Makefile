@@ -15,30 +15,7 @@ CBMS = c128   \
 GEOS = geos-apple \
        geos-cbm
 
-TARGETS = apple2       \
-          apple2enh    \
-          atari        \
-          atarixl      \
-          atari2600    \
-          atari5200    \
-          atari7800    \
-          atmos        \
-          creativision \
-          $(CBMS)      \
-          $(GEOS)      \
-          gamate       \
-          kim1         \
-          lynx         \
-          nes          \
-          none         \
-          osic1p       \
-          pce          \
-          rp6502       \
-          sim6502      \
-          sim65c02     \
-          supervision  \
-          sym1         \
-          telestrat
+TARGETS =
 
 TARGETTEST = none     \
              sim6502  \
