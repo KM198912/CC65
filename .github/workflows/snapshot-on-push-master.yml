@@ -60,38 +60,5 @@ jobs:
       - name: Remove programs in util directory
         shell: bash
         run: make -C util clean
-      - name: Build the document files.
-        shell: bash
-        run: make -j2 doc
-      - name: Build and package 64-bit Windows versions of the tools.
-        run: |
-          make -C src clean
-          make -j2 bin USER_CFLAGS=-Werror CROSS_COMPILE=x86_64-w64-mingw32-
-          make zip
-          mv cc65.zip cc65-snapshot-win64.zip
-      - name: Build and package 32-bit Windows versions of the tools.
-        run: |
-          make -C src clean
-          make -j2 bin USER_CFLAGS=-Werror CROSS_COMPILE=i686-w64-mingw32-
-          make zip
-          mv cc65.zip cc65-snapshot-win32.zip
-
-      - name: Upload a 32-bit Snapshot Zip
-        uses: actions/upload-artifact@v4
-        with:
-          name: cc65-snapshot-win32
-          path: cc65-snapshot-win32.zip
-      - name: Upload a 64-bit Snapshot Zip
-        uses: actions/upload-artifact@v4
-        with:
-          name: cc65-snapshot-win64
-          path: cc65-snapshot-win64.zip
-      - name: Package offline documents.
-        run: 7z a cc65-snapshot-docs.zip ./html/*.*
-      - name: Upload a Documents Snapshot Zip
-        uses: actions/upload-artifact@v4
-        with:
-          name: cc65-snapshot-docs
-          path: cc65-snapshot-docs.zip
 
       # TODO: Publish snapshot zip at https://github.com/cc65/cc65.github.io
